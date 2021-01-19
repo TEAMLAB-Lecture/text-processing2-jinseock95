@@ -34,9 +34,11 @@ def digits_to_words(input_string):
     num2str = {0:'zero', 1:'one', 2:'two', 3:'three', 4:'four', 5:'five', 6:'six', 7:'seven', 8:'eight', 9:'nine'}
 
     # answer 1
+    '''
     import re
-    filter_string = re.sub('[a-zA-Z:!.]', '', input_string).strip()
+    filter_string = re.sub('[a-zA-Z:!.-]', '', input_string).strip()
     digit_string = ' '.join(map(lambda x : num2str[int(x)], filter_string))
+    '''
 
     # answer 2
     '''
@@ -50,10 +52,9 @@ def digits_to_words(input_string):
     '''
 
     # answer 3
-    '''
+    
     filter_string = filter(lambda x : x if x.isdigit() else '', input_string)
     digit_string = ' '.join(map(lambda x : num2str[int(x)], filter_string))
-    '''
 
     return digit_string
 
