@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 #######################
 # Test Processing II  #
 #######################
@@ -28,7 +30,32 @@ def digits_to_words(input_string):
             >>> tp2.digits_to_words(digits_str2)
             'three one four one five'
     """
-    digit_string = None
+    
+    num2str = {0:'zero', 1:'one', 2:'two', 3:'three', 4:'four', 5:'five', 6:'six', 7:'seven', 8:'eight', 9:'nine'}
+
+    # answer 1
+    '''
+    import re
+    filter_string = re.sub('[a-zA-Z:!.-]', '', input_string).strip()
+    digit_string = ' '.join(map(lambda x : num2str[int(x)], filter_string))
+    '''
+
+    # answer 2
+    '''
+    digit = []
+    for v in input_string:
+        try:
+            digit.append(num2str[int(v)])
+        except:
+            pass
+    digit_string = ' '.join(digit)
+    '''
+
+    # answer 3
+    
+    filter_string = filter(lambda x : x if x.isdigit() else '', input_string)
+    digit_string = ' '.join(map(lambda x : num2str[int(x)], filter_string))
+
     return digit_string
 
 
@@ -64,5 +91,11 @@ def to_camel_case(underscore_str):
             >>> tp2.to_camel_case(underscore_str3)
             "alreadyCamel"
     """
-    camelcase_str = None
+
+    if '_' not in underscore_str:
+        camelcase_str = underscore_str
+    else:
+        filter_str = underscore_str.replace('_', ' ').split()
+        camelcase_str = ''.join([word.lower() if i == 0 else word.capitalize() for i, word in enumerate(filter_str)])
+    
     return camelcase_str
