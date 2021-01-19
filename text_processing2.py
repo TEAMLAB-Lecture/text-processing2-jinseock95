@@ -96,6 +96,6 @@ def to_camel_case(underscore_str):
         camelcase_str = underscore_str
     else:
         filter_str = underscore_str.replace('_', ' ').split()
-        ''.join([word.lower() if i == 0 else word.capitalize() for i, word in enumerate(filter_str)])
+        camelcase_str = ''.join([word.lower() if i == 0 else word.capitalize() for i, word in enumerate(filter_str)])
     
     return camelcase_str
